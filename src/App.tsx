@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Database, CheckCircle2, Menu } from 'lucide-react';
+import { CheckCircle2, Menu } from 'lucide-react';
 import {
   Exercise,
   RepertoireSong,
@@ -191,7 +191,7 @@ export function App() {
     setExercises((prev) => [created, ...prev]);
     setActiveExerciseId(created.id);
     timer.loadDurationMinutes(created.durationMinutes);
-    showToast(`Exercício "${created.name}" salvo no LocalStorage!`);
+    showToast(`Exercício "${created.name}" salvo!`);
     return created;
   };
 
@@ -321,7 +321,7 @@ export function App() {
       createdAt: new Date().toISOString(),
     };
     setStudyNotes((prev) => [created, ...prev]);
-    showToast('Anotação salva no Caderno de Estudos (LocalStorage)!');
+    showToast('Anotação salva no Caderno de Estudos!');
   };
 
   const handleDeleteStudyNote = (id: string) => {
@@ -341,7 +341,7 @@ export function App() {
       setActiveExerciseId(nextExercises[0].id);
       timer.loadDurationMinutes(nextExercises[0].durationMinutes);
     }
-    showToast('Dados de exemplo de guitarra carregados no LocalStorage!');
+    showToast('Dados de exemplo de guitarra carregados!');
   };
 
   // Export Backup JSON
@@ -386,7 +386,7 @@ export function App() {
         if (parsed.metronome) {
           metronome.setSettings(parsed.metronome);
         }
-        showToast('Backup JSON importado e salvo no LocalStorage!');
+        showToast('Backup importado com sucesso!');
       } catch {
         showToast('Erro ao ler arquivo JSON de backup.');
       }
@@ -399,7 +399,7 @@ export function App() {
   const handleClearStorage = () => {
     if (
       !window.confirm(
-        'Deseja realmente apagar todos os Exercícios, Repertório e Anotações do LocalStorage?'
+        'Deseja realmente apagar todos os Exercícios, Repertório e Anotações?'
       )
     ) {
       return;
@@ -412,7 +412,7 @@ export function App() {
     setSongs([]);
     setStudyNotes([]);
     setActiveExerciseId(null);
-    showToast('LocalStorage limpo! Todas as informações foram apagadas.');
+    showToast('Todas as informações foram apagadas.');
   };
 
   return (
@@ -486,11 +486,6 @@ export function App() {
                 </p>
               </div>
             </div>
-
-            <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-400 shrink-0">
-              <Database className="w-3 h-3 text-emerald-400" />
-              LocalStorage ({exercises.length} ex • {songs.length} mús)
-            </span>
           </div>
         </header>
 
@@ -605,6 +600,7 @@ export function App() {
         onToggleTimer={timer.toggleTimer}
         onResetTimer={() => timer.resetTimer(activeExercise?.durationMinutes)}
         onGoToExercisesTab={() => setActiveTab('exercises')}
+        sidebarCollapsed={sidebarCollapsed}
       />
     </div>
   );

@@ -30,6 +30,8 @@ interface MiniPlayerBarProps {
   onToggleTimer: () => void;
   onResetTimer: () => void;
   onGoToExercisesTab: () => void;
+  // Layout: o menu lateral tem prioridade, a barra começa após ele no desktop
+  sidebarCollapsed: boolean;
 }
 
 export const MiniPlayerBar: React.FC<MiniPlayerBarProps> = ({
@@ -46,13 +48,18 @@ export const MiniPlayerBar: React.FC<MiniPlayerBarProps> = ({
   onToggleTimer,
   onResetTimer,
   onGoToExercisesTab,
+  sidebarCollapsed,
 }) => {
   const subSymbol =
     SUBDIVISIONS.find((s) => s.value === metronomeSettings.subdivision)
       ?.symbol || '♩ (1x)';
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-zinc-950/95 border-t border-zinc-800 backdrop-blur-md shadow-[0_-10px_30px_rgba(0,0,0,0.6)]">
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-50 bg-zinc-950/95 border-t border-zinc-800 backdrop-blur-md shadow-[0_-10px_30px_rgba(0,0,0,0.6)] transition-all duration-300 ${
+        sidebarCollapsed ? 'lg:left-[76px]' : 'lg:left-64'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
         {/* Left: Active Exercise & Timer Mini Controls */}
         <div className="flex items-center gap-3 min-w-0">

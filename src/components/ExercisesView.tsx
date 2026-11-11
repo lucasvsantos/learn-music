@@ -687,7 +687,7 @@ export const ExercisesView: React.FC<ExercisesViewProps> = ({
           </div>
           <h3 className="text-base font-bold text-zinc-200">
             {exercises.length === 0
-              ? 'Nenhum exercício cadastrado no LocalStorage'
+              ? 'Nenhum exercício cadastrado ainda'
               : 'Nenhum exercício encontrado para este filtro'}
           </h3>
           <p className="text-xs text-zinc-400 max-w-md mx-auto">

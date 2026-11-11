@@ -8,7 +8,6 @@ import {
   Upload,
   Trash2,
   Sparkles,
-  Database,
   X,
   ChevronsLeft,
   ChevronsRight,
@@ -95,13 +94,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Overlay escuro do menu no mobile */}
       <div
         onClick={onCloseMobile}
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden transition-opacity ${
+        className={`fixed inset-0 z-[55] bg-black/60 backdrop-blur-sm lg:hidden transition-opacity ${
           isMobileOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       />
 
       <aside
-        className={`fixed top-0 left-0 bottom-0 z-40 lg:z-30 flex flex-col bg-zinc-950/95 border-r border-zinc-800/80 backdrop-blur-md transition-all duration-300 pb-20 ${
+        className={`fixed top-0 left-0 bottom-0 z-[60] flex flex-col bg-zinc-950 border-r border-zinc-800/80 transition-all duration-300 ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0 ${compact ? 'lg:w-[76px]' : 'lg:w-64'} w-72`}
       >
@@ -202,18 +201,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
             );
           })}
 
-          {/* Dados / LocalStorage */}
+          {/* Dados */}
           <div className="pt-5 space-y-1.5">
             {!compact ? (
-              <div className="flex items-center justify-between px-2 pb-1">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-                  Dados
-                </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-zinc-500">
-                  <Database className="w-3 h-3 text-emerald-400" />
-                  LocalStorage
-                </span>
-              </div>
+              <span className="block px-2 pb-1 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                Dados
+              </span>
             ) : (
               <div className="border-t border-zinc-800/80 mx-2 mb-2" />
             )}
@@ -254,7 +247,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <button
                 type="button"
                 onClick={onClearStorage}
-                title="Limpar LocalStorage (Apagar tudo)"
+                title="Apagar todos os dados"
                 className={`${dataActionClass} bg-zinc-900 hover:bg-rose-950/50 border-zinc-800 hover:border-rose-500/40 text-zinc-400 hover:text-rose-400`}
               >
                 <Trash2 className="w-4 h-4 shrink-0" />

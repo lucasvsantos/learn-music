@@ -1120,7 +1120,7 @@ export const TheoryView: React.FC<TheoryViewProps> = ({
                 Nova Anotação de Estudo
               </h3>
               <p className="text-xs text-zinc-400">
-                Salve resumos, dúvidas, descobertas ou padrões que você está estudando. Tudo fica salvo no seu LocalStorage.
+                Salve resumos, dúvidas, descobertas ou padrões que você está estudando.
               </p>
             </div>
 

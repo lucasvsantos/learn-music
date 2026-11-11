@@ -653,7 +653,7 @@ export const RepertoireView: React.FC<RepertoireViewProps> = ({
           </div>
           <h3 className="text-base font-bold text-zinc-200">
             {songs.length === 0
-              ? 'Seu Repertório está vazio no LocalStorage'
+              ? 'Seu Repertório está vazio'
               : 'Nenhuma música encontrada para este filtro'}
           </h3>
           <p className="text-xs text-zinc-400 max-w-md mx-auto">
